@@ -6,7 +6,7 @@
 /*   By: sataskin <sataskin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 13:21:33 by sataskin          #+#    #+#             */
-/*   Updated: 2024/05/13 11:48:59 by sataskin         ###   ########.fr       */
+/*   Updated: 2024/05/13 12:57:59 by sataskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,21 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "libft/libft.h"
+
+// typedef struct s_cmds
+// {
+//     char            **command;
+//     char            *path;
+//     int                c_pid;
+//     int                fd_infile;
+//     int                fd_outfile;
+//     int                id;
+//     int                commands;
+//     int                valid;
+//     int                exit_status;
+//     struct s_cmds    *next;
+// }            t_cmds;
+
 
 // typedef struct s_env
 // {
