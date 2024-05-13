@@ -6,7 +6,7 @@
 /*   By: sataskin <sataskin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 13:21:33 by sataskin          #+#    #+#             */
-/*   Updated: 2024/05/09 11:04:13 by sataskin         ###   ########.fr       */
+/*   Updated: 2024/05/13 11:48:59 by sataskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,19 @@
 # include <readline/history.h>
 # include "libft/libft.h"
 
-int main(void);
+// typedef struct s_env
+// {
+// 	char	*export;
+// 	char	*key;
+// 	char	*value;
+// 	t_env	*next;
+// }	t_env;
+
+// typedef struct s_mini
+// {
+// 	t_env	*env;		
+// }	t_mini;
+
+int	pwd(void);
 
 #endif

@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sataskin <sataskin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/09 13:25:04 by sataskin          #+#    #+#             */
-/*   Updated: 2024/05/13 11:53:33 by sataskin         ###   ########.fr       */
+/*   Created: 2024/05/13 11:29:05 by sataskin          #+#    #+#             */
+/*   Updated: 2024/05/13 11:36:14 by sataskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/* HELLO */
-
-int main(void)
+int	pwd(void)
 {
-    char *rl;
-
-	while (1)
-	{
-    	rl = readline("MINISHELL:) > ");
-		if (!rl)
-			return (-1);
-    	printf("%s\n", rl);
-		add_history(rl);
-		free(rl);
-		pwd();
-	}
-    return (0);
+	char *pwd;
+	
+	pwd = getcwd(NULL, 0);
+	if (pwd == NULL)
+		return (-1);
+	printf("%s\n", pwd);
+	return (0);
 }

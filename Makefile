@@ -6,13 +6,14 @@
 #    By: sataskin <sataskin@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/08 13:19:14 by sataskin          #+#    #+#              #
-#    Updated: 2024/05/09 11:02:42 by sataskin         ###   ########.fr        #
+#    Updated: 2024/05/13 11:45:31 by sataskin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-SRCS = main.c
+SRCS = main.c \
+		pwd.c
 
 OBJECTS = $(SRCS:.c=.o)
 
