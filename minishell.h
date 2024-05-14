@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 13:21:33 by sataskin          #+#    #+#             */
-/*   Updated: 2024/05/14 10:17:45 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/05/14 11:38:50 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,10 @@ typedef struct s_pars
 // }	t_mini;
 
 int	pwd(void);
+
+/* PARSING */
+char	**parser(char const *str);
+char	**null(void);
+void	initialize_parsing_specs(t_pars *specs, char const *str);
 
 #endif

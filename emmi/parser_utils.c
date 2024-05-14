@@ -6,11 +6,11 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:22:26 by emansoor          #+#    #+#             */
-/*   Updated: 2024/05/14 10:15:32 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/05/14 11:37:04 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 /*
 looks for the first single or double quote in str and returns is, returns

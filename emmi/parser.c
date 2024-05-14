@@ -6,11 +6,11 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:09:52 by emansoor          #+#    #+#             */
-/*   Updated: 2024/05/14 10:15:24 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/05/14 11:37:08 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 /*
 frees a 2D array
