@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:22:26 by emansoor          #+#    #+#             */
-/*   Updated: 2024/05/14 11:37:04 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:20:33 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 looks for the first single or double quote in str and returns is, returns
 zero if neither quote type is found
 */
-static int	identifier(char const *str)
+static int	quote_identifier(char const *str)
 {
 	int	index;
 	int	quote;
@@ -62,19 +62,15 @@ static int	quote_count(char const *str, int quote)
 /*
 finds the closing quote in str, returns zero for an error
 */
-static int	find_closing_quote(char const *str, int *quotes,
-int quote, size_t *index)
+static int	find_closing_quote(char const *str, t_pars *specs, size_t *index)
 {
-	size_t	str_len;
-
 	(*index)++;
-	(*quotes)--;
-	str_len = ft_strlen(str);
-	while (str[*index] != quote && *index < str_len)
+	specs->quotecount--;
+	while (str[*index] != specs->quote_type && *index < specs->str_len)
 		(*index)++;
-	if (*quotes % 2 == 1 && (str[*index + 1] == '\0' || str[*index + 1] == 32 || str[*index + 1] == 9))
+	if (specs->quotecount % 2 == 1 && (str[*index + 1] == '\0' || str[*index + 1] == specs->delimiter))
 	{
-		quotes--;
+		specs->quotecount--;
 		return (1);
 	}
 	else
@@ -86,28 +82,25 @@ counts the words in str using space as delimiter, a block of characters
 surrounded by single pair of quotes is also treated as a word, returns zero
 for an error
 */
-static int	word_count(char const *str, int quotes, int quote)
+int	word_count(char const *str, t_pars *specs)
 {
 	size_t	index;
 	int		substrs;
 	int		found_pair;
-	size_t	str_len;
 
 	index = 0;
 	substrs = 0;
-	str_len = ft_strlen(str);
-	while (index < str_len)
+	while (index < specs->str_len)
 	{
-		if (str[index] == quote && quotes % 2 == 0 && quotes > -1)
+		if (str[index] == specs->quote_type && specs->quotecount % 2 == 0 && specs->quotecount > -1)
 		{
-			found_pair = find_closing_quote(str, &quotes, quote, &index); // if quotes > 2 && quotes % 2 == 0 -> find the next quote where str[index] == quote && str[index + 1] == tab/space || str[index + 1] == '\0'
+			found_pair = find_closing_quote(str, specs, &index);
 			if (found_pair > 0)
 				substrs++;
 			else
 				return (0);
 		}
-		else if ((str[index] != 32 || str[index] != 9) && (str[index + 1] == 32
-				|| str[index + 1] == 9 || str[index + 1] == '\0'))
+		else if ((str[index] != specs->delimiter) && (str[index + 1] == specs->delimiter || str[index + 1] == '\0'))
 			substrs++;
 		index++;
 	}
@@ -120,8 +113,10 @@ initializes a struct with essential parsing info
 void	initialize_parsing_specs(t_pars *specs, char const *str)
 {
 	specs->ptr = NULL;
-	specs->quote_type = identifier(str);
+	specs->quote_type = quote_identifier(str);
 	specs->quotecount = quote_count(str, specs->quote_type);
-	specs->wordcount = word_count(str, specs->quotecount, specs->quote_type);
+	specs->delimiter = find_delimiter(str);
+	specs->delimcount = delim_count(str, specs->delimiter);
 	specs->str_len = ft_strlen(str);
+	specs->wordcount = 0;
 }

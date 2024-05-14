@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:09:52 by emansoor          #+#    #+#             */
-/*   Updated: 2024/05/14 11:37:08 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:26:11 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ char	**parser(char const *str)
 	if (ft_strlen(str) == 0)
 		return (null());
 	initialize_parsing_specs(&specs, str);
+	specs.wordcount = word_count(str, &specs);
 	if (specs.wordcount)
 	{
 		specs.ptr = (char **)malloc(sizeof(char *) * (specs.wordcount + 1));
@@ -119,3 +120,8 @@ char	**parser(char const *str)
 	}
 	return (null());
 }
+
+/*
+cc test.c more_parser_utils.c parser.c parser_utils.c ../libft/ft_strlen.c ../libft/ft_strdup.c ../libft/ft_substr.c ../libft/ft_bzero.c ../libft/ft_memset.c -g -fsanitize=address
+
+*/

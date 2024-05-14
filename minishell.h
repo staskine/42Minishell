@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 13:21:33 by sataskin          #+#    #+#             */
-/*   Updated: 2024/05/14 11:38:50 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:09:56 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ typedef struct s_pars
 {
 	char			**ptr;
 	int				quote_type;
+    int             delimiter;
 	int				quotecount;
+    int             delimcount;
 	int				wordcount;
 	size_t			str_len;
 }			t_pars;
@@ -62,5 +64,6 @@ int	pwd(void);
 char	**parser(char const *str);
 char	**null(void);
 void	initialize_parsing_specs(t_pars *specs, char const *str);
+int	find_delimiter(char const *str);
 
 #endif
