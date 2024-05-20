@@ -3,23 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sataskin <sataskin@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 14:03:40 by sataskin          #+#    #+#             */
-/*   Updated: 2024/04/04 10:27:51 by sataskin         ###   ########.fr       */
+/*   Created: 2023/10/24 12:26:24 by emansoor          #+#    #+#             */
+/*   Updated: 2024/03/22 06:40:58 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	length;	
+/* calculates the length of the string "str" */
 
-	length = 0;
-	while (s[length] != '\0')
+size_t	ft_strlen(const char *str)
+{
+	size_t	len;
+
+	len = 0;
+	if (str)
 	{
-		length++;
+		while (str[len] != 0)
+			len++;
 	}
-	return (length);
+	return (len);
 }

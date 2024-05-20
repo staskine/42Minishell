@@ -3,61 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sataskin <sataskin@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 11:35:55 by sataskin          #+#    #+#             */
-/*   Updated: 2023/11/15 12:15:11 by sataskin         ###   ########.fr       */
+/*   Created: 2023/10/24 18:28:20 by emansoor          #+#    #+#             */
+/*   Updated: 2024/02/09 14:16:00 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* a function that turns an array into it's an integer of it's numerical
-representation. It first checks that the string exists and then skips all
-the whitespace characters. Then it begins creating the string. */
-
 #include "libft.h"
 
-static int	ft_checkwhitespace(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\f' || c == '\r' || c == '\v'
-		|| c == '\n')
-		return (1);
-	else
-		return (0);
-}
-
-int	ft_check_return(int sign)
-{
-	if (sign > 0)
-		return (-1);
-	else
-		return (0);
-}
+/*  converts string pointed to by str to int representation */
 
 int	ft_atoi(const char *str)
 {
-	long	number;
-	int		index;
+	long	nbr;
 	int		sign;
-	size_t	m;
 
-	number = 0;
-	index = 0;
+	nbr = 0;
 	sign = 1;
-	m = 0 - 1;
-	while (ft_checkwhitespace(str[index]))
-		index++;
-	if (str[index] == '+' || str[index] == '-')
+	while ((8 < *str && *str < 14) || *str == 32)
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (str[index] == '-')
+		if (*str == '-')
 			sign = -1;
-		index++;
+		str++;
 	}
-	while (str[index] <= '9' && str[index] >= '0')
+	while (ft_isdigit(*str))
 	{
-		if ((size_t)number > m / 10 - (str[index] - '0'))
-			return (ft_check_return(sign));
-		number = number * 10 + str[index] - '0';
-		index++;
+		nbr = nbr * 10;
+		nbr = nbr + (*str - 48);
+		str++;
+		if (nbr < 0 && sign < 0)
+			return (0);
+		if (nbr < 0 && sign > 0)
+			return (-1);
 	}
-	return ((int)number * sign);
+	return ((int)nbr * sign);
 }
